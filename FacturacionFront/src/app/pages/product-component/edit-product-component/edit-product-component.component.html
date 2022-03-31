@@ -1,0 +1,71 @@
+<form (submit)="updateProduct($event)">
+    <dx-form    [(formData)]="product" 
+                labelLocation="top" 
+                [colCount]="2">
+        <dxi-item   itemType="group"
+                [colSpan]="2" 
+                [colCount]="2">
+
+            <dxi-item   dataField="description"
+                editorType="dxTextBox" 
+                [colSpan]="1"
+                [label]="   {
+                                text:'Descripción'
+                            }">
+            <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-item>
+            <dxi-item   dataField="idMark" 
+            editorType="dxSelectBox" 
+            [colSpan]="1"
+            [label]="   {
+                            text:'Marca'
+                        }"
+            [editorOptions]="   { 
+                                    dataSource: typeMark,
+                                    displayExpr: 'description',  
+                                    valueExpr: 'id',
+                                    showClearButton:'true'
+                                }">
+
+            <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-item>
+            <dxi-item   dataField="price"
+                editorType="dxTextBox" 
+                [colSpan]="1"
+                [label]="   {
+                                text:'Precio'
+                            }">
+            <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-item>
+        </dxi-item>
+     <dxi-item   itemType="group" 
+        [colSpan]="2" 
+        [colCount]="2">
+            <dxi-item   itemType="button" 
+                [colSpan]="1" 
+                [buttonOptions]="   {
+                                        text: 'Guardar', 
+                                        type: 'success', 
+                                        width:'auto',
+                                        useSubmitBehavior: true
+                                    }">
+            </dxi-item>
+            <dxi-item>
+                <dx-button [width]="'50%'" 
+                           class="positionButon" 
+                           hint="Cancelar" 
+                           icon="clear"
+                           text="Cancelar" 
+                           type="danger" 
+                           (onClick)="Close()"
+                           hint="Cancelar" >
+                </dx-button>
+            </dxi-item>
+    </dxi-item>  
+    </dx-form>   
+</form>
+<dx-toast [(visible)]="isVisible" 
+          [(type)]="type" 
+          [(message)]="message">
+</dx-toast>
+

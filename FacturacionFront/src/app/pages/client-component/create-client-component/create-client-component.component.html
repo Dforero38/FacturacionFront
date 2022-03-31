@@ -1,0 +1,111 @@
+<form (submit)="insertCustomer($event)">
+    <dx-form    [(formData)]="client" 
+                labelLocation="top" 
+                [colCount]="2">       
+        <dxi-item   itemType="group"
+                [colSpan]="2" 
+                [colCount]="2">
+
+            <dxi-item   dataField="businessName"
+                editorType="dxTextBox" 
+                [colSpan]="1"
+                [label]="   {
+                                text:'Razon Social'
+                            }">
+            <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-item>
+            <dxi-item   dataField="nit"
+                editorType="dxTextBox" 
+                [colSpan]="1"
+                [label]="   {
+                                text:'Nit'
+                            }">
+            <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-item>
+        </dxi-item>
+        <dxi-item   itemType="group"
+                [colSpan]="2" 
+                [colCount]="2">
+                <dxi-item   dataField="address"
+                editorType="dxTextBox" 
+                [colSpan]="1"
+                [label]="   {
+                                text:'Dirección'
+                            }">
+            <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-item>
+            <dxi-item   dataField="phone"
+                editorType="dxTextBox" 
+                [colSpan]="1"
+                [label]="   {
+                                text:'Telefono'
+                            }">
+            <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-item>
+        </dxi-item>       
+        <dxi-item   itemType="group"
+                [colSpan]="2" 
+                [colCount]="2">
+            <dxi-item   dataField="idTypeCustomer" 
+            editorType="dxSelectBox" 
+            [colSpan]="1"
+            [label]="   {
+                            text:'Tipo'
+                        }"
+            [editorOptions]="   { 
+                                    dataSource: typeClient,
+                                    displayExpr: 'description',  
+                                    valueExpr: 'id',
+                                    showClearButton:'true'
+                                }">
+
+            <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="registrationDate"
+                          [label]="{ text:'Fecha y Hora Registro'}"
+                          editorType="dxDateBox"
+                          [colSpan]="4"
+                        [editorOptions]="{ type: 'datetime' }">
+                    <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-item>
+        </dxi-item>
+        <dxi-item   itemType="group"
+                [colSpan]="2" 
+                [colCount]="2">
+                <dxi-item editorType="dxSwitch"
+                dataField="state"
+                [label]=" { text:'Estado' }"
+                [editorOptions]=" { switchedOffText: 'No', switchedOnText: 'Si'}">
+                </dxi-item> 
+        </dxi-item>
+        <dxi-item   itemType="group" 
+        [colSpan]="2" 
+        [colCount]="2">
+            <dxi-item   itemType="button" 
+                [colSpan]="1" 
+                [buttonOptions]="   {
+                                        text: 'Guardar', 
+                                        type: 'success',
+                                        icon:'check', 
+                                        width:'auto',
+                                        useSubmitBehavior: true
+                                    }">
+            </dxi-item>
+            <dxi-item>
+                <dx-button [width]="'50%'" 
+                           class="positionButon" 
+                           hint="Cancelar" 
+                           icon="clear"
+                           text="Cancelar" 
+                           type="danger" 
+                           (onClick)="Close()"
+                           hint="Cancelar" >
+                </dx-button>
+            </dxi-item>
+    </dxi-item>  
+    </dx-form>   
+</form>
+<dx-toast [(visible)]="isVisible" 
+          [(type)]="type" 
+          [(message)]="message">
+</dx-toast>

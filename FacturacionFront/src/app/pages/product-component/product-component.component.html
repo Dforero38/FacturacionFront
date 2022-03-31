@@ -1,0 +1,79 @@
+<div class="title_pago">
+    <H1>PRODUCTOS</H1>
+</div>
+<div class="derecha">
+    <dx-button
+        text="Nuevo Registro"
+        icon="add"
+        (onClick)="closePopup = true">
+    </dx-button>
+</div>
+<br>
+<dx-data-grid id="dataGrid"
+              [dataSource]="products"
+              keyExpr="id"
+              [allowColumnReordering]="true">
+              <dxi-column dataField="id"
+                          caption="N."
+                          alignment="center"></dxi-column>              
+              <dxi-column dataField="description"
+                          caption="Descripción"
+                          alignment="center"></dxi-column>
+              <dxi-column dataField="nameMark"
+                          caption="Marca"
+                          alignment="center"></dxi-column>
+              <dxi-column dataField="price"
+                          caption="Precio"
+                          alignment="center"></dxi-column>
+                          <dxi-column caption="" 
+                          cellTemplate="actionsCellTemplate" 
+                          caption="Modificar/Eliminar" 
+                          alignment="center">
+              </dxi-column>
+      
+              <div *dxTemplate="let cell of 'actionsCellTemplate'" 
+                    alignment="center">
+                <dx-button alignment="center" 
+                           stylingMode="contained" 
+                           text="" 
+                           type="success" 
+                           icon="edit"
+                           hint="Modificar"
+                           (onClick)="editProduct(cell.data)">
+                </dx-button>
+                &nbsp;
+                <dx-button alignment="center" 
+                           stylingMode="contained" 
+                           text="" 
+                           type="danger" 
+                           icon="clear"
+                           (onClick)="deleteProduct(cell.data.id)"
+                           hint="Eliminar">
+                </dx-button>
+              </div>
+</dx-data-grid>
+<dx-popup 
+          width="40%" 
+          height="40%" 
+          title="NUEVO PRODUCTO"
+          [(visible)]="closePopup"
+          [closeOnOutsideClick]="true"
+          [dragEnabled]="true">
+          <app-create-product-component (closePopup)="processProduct($event)"></app-create-product-component>
+</dx-popup>
+
+<dx-popup 
+          width="40%" 
+          height="50%" 
+          title="MODIFICAR PRODUCTO"
+          [(visible)]="closePopupM"
+          [closeOnOutsideClick]="true"
+          [dragEnabled]="true">
+          <app-edit-product-component (closePopupM)="processProduct($event)"  
+                                      [product] = "product"></app-edit-product-component>
+</dx-popup>
+<dx-toast [(visible)]="isVisible" 
+          [(type)]="type" 
+        [(message)]="message">
+</dx-toast>
+

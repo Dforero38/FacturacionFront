@@ -1,0 +1,27 @@
+<div class="container-grid m-4 mt-1">
+  <dx-tabs class="tabsMenu" #apiTabs 
+           [dataSource]="tabs" 
+           [selectedIndex]="0"
+           (onItemClick)="selectTab($event)"   
+           (click)="selectTab($event)"></dx-tabs>
+  
+  <div [ngSwitch]="tabContent">  
+    <div *ngSwitchCase="'0'">
+      <app-home-component></app-home-component>
+    </div>  
+    <div *ngSwitchCase="'1'">
+       <app-client-component></app-client-component>
+    </div> 
+    <div *ngSwitchCase="'2'">
+      <app-product-component></app-product-component>
+    </div>
+    <div *ngSwitchCase="'3'">
+      <app-bill-component></app-bill-component>
+    </div>
+    <div *ngSwitchCase="'4'">
+      <app-pay-component></app-pay-component>
+    </div>
+  </div>   
+</div>
+
+<router-outlet></router-outlet>  <!-- ]No borrar -->

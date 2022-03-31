@@ -1,0 +1,73 @@
+<div class="title_billpay">
+    <h1>PAGO FACTURA</h1>
+</div>
+<form class="form">
+    <dx-form    [(formData)]="billpayF" 
+                labelLocation="top" 
+                [colCount]="3">
+        <dxi-item   itemType="group"
+                    [colSpan]="3" 
+                    [colCount]="3">
+            <dxi-item [colCount]="2"  
+                      [colSpan]="2">
+                <dx-data-grid id="dataGrid"
+                    [dataSource]="billing"
+                    keyExpr="id"
+                    [allowColumnReordering]="true">
+                    <dxo-selection mode="multiple"></dxo-selection>
+                    <dxo-editing mode="cell" [allowUpdating]="true"></dxo-editing>
+                        <dxi-column dataField="id"
+                                    caption="N."
+                                    alignment="center">
+                        </dxi-column>              
+                        <dxi-column dataField="numero"
+                                    caption="Numero"
+                                    alignment="center">
+                        </dxi-column>
+                        <dxi-column dataField="fecha"
+                                    caption="Fecha"
+                                    alignment="center">
+                        </dxi-column>
+                        <dxi-column dataField="saldoCartera"
+                                    caption="Saldo Cartera"
+                                    alignment="center">
+                        </dxi-column>
+                        <dxi-column dataField="abonoCartera"
+                                    caption="Abono Cartera"
+                                    alignment="center">
+                        </dxi-column>                      
+                </dx-data-grid> 
+            </dxi-item>
+            <dxi-item [colCount]="1"  
+                      [colSpan]="1"
+                      itemType="group">
+                    <dxi-item [label]="{text:'Valor Pagado'}"
+                              [editorOptions]="{readOnly:true}" 
+                              editorType="dxNumberBox" 
+                              dataField="Cartera">
+                    </dxi-item>
+                    <dxi-item [label]="{text:'Abono Total'}"
+                              [editorOptions]="{readOnly:true}"  
+                              editorType="dxNumberBox" 
+                              dataField="Abono">
+                    </dxi-item>
+                    <dxi-item [label]="{text:'Diferencia Cartera'}"
+                              [editorOptions]="{readOnly:true}"  
+                              editorType="dxNumberBox" 
+                              dataField="Diferencia">
+                    </dxi-item>
+                    <dxi-item>
+                        <dx-button [width]="'50%'" 
+                                    class="positionButon" 
+                                    hint="Finalizar" 
+                                    icon="importselected"
+                                    text="Finaliza Recaudo" 
+                                    type="success" 
+                                    hint="Finalizar" 
+                                    aligment="center">
+                        </dx-button>
+                    </dxi-item>
+            </dxi-item>
+        </dxi-item>
+    </dx-form>
+</form>

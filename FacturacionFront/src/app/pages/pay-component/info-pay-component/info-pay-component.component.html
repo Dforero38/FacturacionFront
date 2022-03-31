@@ -1,0 +1,105 @@
+<form class="form">
+    <dx-form    [(formData)]="infopay" 
+                labelLocation="top" 
+                [colCount]="3">
+        <dxi-item   itemType="group"
+                [colSpan]="3" 
+                [colCount]="3">
+            <dxi-item   dataField="NumFactura"
+                editorType="dxTextBox"
+                [disabled]="true" 
+                [colSpan]="1"
+                [label]="   {
+                                text:'Numero Factura'
+                            }">
+            <!-- <dxi-validation-rule type="required"></dxi-validation-rule> -->
+            </dxi-item>
+            <dxi-item   dataField="FechaRegistro"
+                editorType="dxTextBox"
+                [disabled]="true"  
+                [colSpan]="1"
+                [label]="   {
+                                text:'Fecha'
+                            }">
+            <!-- <dxi-validation-rule type="required"></dxi-validation-rule> -->
+            </dxi-item>
+            <dxi-item   dataField="FechaRegistro"
+                editorType="dxTextBox"
+                [disabled]="true"  
+                [colSpan]="1"
+                [label]="   {
+                                text:'Razon Social'
+                            }">
+            <!-- <dxi-validation-rule type="required"></dxi-validation-rule> -->
+            </dxi-item>
+        </dxi-item>
+        <dxi-item   itemType="group"
+                [colSpan]="3" 
+                [colCount]="3">
+            <dxi-item   dataField="FechaRegistro"
+                editorType="dxTextBox"
+                [disabled]="true"  
+                [colSpan]="1"
+                [label]="   {
+                                text:'Nit'
+                            }">
+            <!-- <dxi-validation-rule type="required"></dxi-validation-rule> -->
+            </dxi-item>
+            <dxi-item   dataField="FechaRegistro"
+                editorType="dxTextBox"
+                [disabled]="true"  
+                [colSpan]="1"
+                [label]="   {
+                                text:'Dirección'
+                            }">
+            <!-- <dxi-validation-rule type="required"></dxi-validation-rule> -->
+            </dxi-item>
+            <dxi-item   dataField="FechaRegistro"
+                editorType="dxTextBox"
+                [disabled]="true"  
+                [colSpan]="1"
+                [label]="   {
+                                text:'Telefono'
+                            }">
+            <!-- <dxi-validation-rule type="required"></dxi-validation-rule> -->
+            </dxi-item>
+
+        </dxi-item>   
+        <dxi-item   itemType="group"
+                [colSpan]="3" 
+                [colCount]="3">
+            <dxi-item   dataField="FechaRegistro"
+                editorType="dxTextBox"
+                [disabled]="true"  
+                [colSpan]="1"
+                [label]="   {
+                                text:'Tipo Cliente'
+                                
+                            }">
+            <!-- <dxi-validation-rule type="required"></dxi-validation-rule> -->
+            </dxi-item>
+            <dxi-item   dataField="FechaRegistro"
+                editorType="dxTextBox"
+                [disabled]="true"  
+                [colSpan]="1"
+                [label]="   {
+                                text:'Estado'
+                                
+                            }">
+            <!-- <dxi-validation-rule type="required"></dxi-validation-rule> -->
+            </dxi-item>
+            <dxi-item   dataField="FechaRegistro"
+                editorType="dxTextBox"
+                [disabled]="true"  
+                [colSpan]="1"
+                [label]="   {
+                                text:'Tipo Pago'
+                               
+                            }">
+            <!-- <dxi-validation-rule type="required"></dxi-validation-rule> -->
+            </dxi-item>
+
+        </dxi-item>  
+    </dx-form>   
+</form>
+

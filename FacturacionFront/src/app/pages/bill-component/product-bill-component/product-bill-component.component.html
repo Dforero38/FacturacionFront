@@ -1,0 +1,115 @@
+<form class="form">
+    <dx-form    [(formData)]="bill" 
+                labelLocation="top" 
+                [colCount]="5">
+    
+        <dxi-item   dataField="id" 
+                    editorType="dxSelectBox" 
+                    [colSpan]="2"
+                    [label]="   {
+                                    text:'Productos'
+                                }"
+                    [editorOptions]="   { 
+                                            dataSource: products,
+                                            displayExpr: 'description',  
+                                            valueExpr: 'id',
+                                            showClearButton:'true'
+                                        }">
+                
+            <dxi-validation-rule type="required"></dxi-validation-rule>
+        
+        </dxi-item>
+        
+        <dxi-item   dataField="NumFactura"
+                    editorType="dxTextBox"
+                    [colSpan]="1"
+                    [label]="   {
+                                    text:'Cantidad'
+                                }">
+                        
+            <dxi-validation-rule type="required"></dxi-validation-rule>
+                
+        </dxi-item>
+        
+        <dxi-item   dataField="NumFactura"
+                    editorType="dxTextBox"
+                    [disabled]="true"
+                    [colSpan]="1"
+                    [label]="   {
+                                    text:'Valor Unitario'
+                                }">
+                
+        </dxi-item>
+        
+        <dxi-item   dataField="FechaRegistro"
+                    editorType="dxTextBox"
+                    [colSpan]="1"
+                    [disabled]="true"
+                    [label]="   {
+                                    text:'Valor Total'                               
+                                }">
+                
+        </dxi-item>
+
+        <dxi-item   itemType="button" 
+                    [colSpan]="5" 
+                    [buttonOptions]="   {
+                                            text: 'Adicionar', 
+                                            type: 'success', 
+                                            icon: 'plus',
+                                            width:'auto',
+                                            height:'auto',
+                                            useSubmitBehavior: true
+                                        }">
+        </dxi-item>
+
+     </dx-form>   
+
+</form>
+
+<dx-data-grid   id="dataGrid"
+                class="mt-5"
+                [dataSource]="selectProducts"
+                keyExpr="id"
+                [allowColumnReordering]="true">
+
+              <dxi-column dataField="id"
+                          caption="N."
+                          alignment="center"></dxi-column>              
+              <dxi-column dataField="product"
+                          caption="Producto"
+                          alignment="center"></dxi-column>
+              <dxi-column dataField="quantity"
+                          caption="Cantidad"
+                          alignment="center"></dxi-column>
+              <dxi-column dataField="price"
+                          caption="Valor Unitario"
+                          alignment="center"></dxi-column>
+              <dxi-column dataField="total"
+                          caption="Valor Total"
+                          alignment="center"></dxi-column>
+              <dxi-column caption="" 
+                          cellTemplate="actionsCellTemplate" 
+                          caption="Modificar/Eliminar" 
+                          alignment="center">
+              </dxi-column>
+      
+              <div *dxTemplate="let cell of 'actionsCellTemplate'" 
+                    alignment="center">
+                <dx-button alignment="center" 
+                           stylingMode="contained" 
+                           text="" 
+                           type="success" 
+                           icon="edit"
+                           hint="Modificar">
+                </dx-button>
+                &nbsp;
+                <dx-button alignment="center" 
+                           stylingMode="contained" 
+                           text="" 
+                           type="danger" 
+                           icon="clear"
+                           hint="Eliminar">
+                </dx-button>
+              </div>
+</dx-data-grid>

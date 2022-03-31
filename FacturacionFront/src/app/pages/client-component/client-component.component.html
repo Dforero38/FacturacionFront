@@ -1,0 +1,90 @@
+<div class="titulo">
+    <H1>CLIENTES</H1>
+</div>
+
+<div class="derecha">
+    <dx-button
+        text="Nuevo Registro"
+        icon="add"
+        (onClick)="closePopup = true">
+    </dx-button>
+</div> 
+<br>
+<dx-data-grid id="dataGrid"
+              [dataSource]="clients"
+              keyExpr="id"
+              [allowColumnReordering]="true">
+                <dxi-column dataField="id"
+                            caption="N."
+                            alignment="center"></dxi-column>              
+                <dxi-column dataField="businessName"
+                            caption="Razón Social"
+                            alignment="center"></dxi-column>
+                <dxi-column dataField="nit"
+                            caption="Nit"
+                            alignment="center"></dxi-column>
+                <dxi-column dataField="descriptionTypeCustomer"
+                            caption="Tipo de Cliente"
+                            alignment="center"></dxi-column>
+                <dxi-column dataField="address"
+                            caption="Dirección"
+                            alignment="center"></dxi-column>
+                <dxi-column dataField="phone"
+                            caption="Telefono"
+                            alignment="center"></dxi-column>                          
+                <dxi-column dataField="state"
+                            caption="Estado"
+                            alignment="center"></dxi-column>
+                <dxi-column dataField="registrationDate"
+                            caption="Fecha Ingreso"
+                            alignment="center"></dxi-column>
+                <dxi-column caption="" 
+                            cellTemplate="actionsCellTemplate" 
+                            caption="Modificar/Eliminar" 
+                            alignment="center">
+                </dxi-column>
+        
+              <div *dxTemplate="let cell of 'actionsCellTemplate'" 
+                    alignment="center">
+                <dx-button alignment="center" 
+                           stylingMode="contained" 
+                           text="" 
+                           type="success" 
+                           icon="edit"
+                           hint="Modificar"
+                           (onClick)="editClient(cell.data)">
+                </dx-button>
+                &nbsp;
+                <dx-button alignment="center" 
+                           text="" 
+                           type="danger" 
+                           icon="clear"
+                           (onClick)="deleteCustomer(cell.data.id)"
+                           hint="Eliminar">
+                </dx-button>
+              </div>
+</dx-data-grid> 
+
+<dx-popup 
+          width="40%" 
+          height="65%" 
+          title="NUEVO CLIENTE"
+          [(visible)]="closePopup"
+          [closeOnOutsideClick]="true"
+          [dragEnabled]="false">
+          <app-create-client-component (closePopup)="processClient($event)"></app-create-client-component>         
+</dx-popup>
+
+<dx-popup 
+          width="40%" 
+          height="65%" 
+          title="MODIFICAR CLIENTE"
+          [(visible)]="closePopupM"
+          [closeOnOutsideClick]="true"
+          [dragEnabled]="true">
+          <app-edit-client-component (closePopupM)="processClient($event)" [client] = "client" ></app-edit-client-component>
+</dx-popup>
+
+<dx-toast [(visible)]="isVisible" [(type)]="type" [(message)]="message">
+</dx-toast>
+
