@@ -1,26 +1,30 @@
 export class infobillDTO {
-    numFactura:number;
-    fechaRegistro: Date;
-    idCliente?:number;
-    iva:boolean;
-    nombre:string;
+    id: number;
+    numBill:number;
+    registrationDate: Date;
+    idCostumer?:number;
+    flagIva:string;
+    businessName:string;
     nit:number;
-    direccion:string;
-    telefono:number;
-    tipocliente:string;
-    estado:string;
+    address:string;
+    phone:number;
+    TypeCustomer:string;
+    state:string;
+    flagstate :string;
 
     constructor(){
-        this.numFactura=1,
-        this.fechaRegistro=new Date,
-        this.idCliente=0,
-        this.iva=false,
-        this.nombre='',
+        this.id = 0;
+        this.numBill=1,
+        this.registrationDate=new Date,
+        this.idCostumer=0,
+        this.flagIva='',
+        this.businessName='',
         this.nit=0,
-        this.direccion='',
-        this.telefono=0,
-        this.tipocliente='',
-        this.estado=''
+        this.address='',
+        this.phone=0,
+        this.TypeCustomer='',
+        this.state='',
+        this.flagstate = ''
     }
 }
 

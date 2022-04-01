@@ -14,8 +14,6 @@ import { CreateProductComponentComponent } from './pages/product-component/creat
 import { EditProductComponentComponent } from './pages/product-component/edit-product-component/edit-product-component.component';
 import { InfoBillComponentComponent } from './pages/bill-component/info-bill-component/info-bill-component.component';
 import { ProductBillComponentComponent } from './pages/bill-component/product-bill-component/product-bill-component.component';
-import { InfoPayComponentComponent } from './pages/pay-component/info-pay-component/info-pay-component.component';
-import { BillPayComponentComponent } from './pages/pay-component/bill-pay-component/bill-pay-component.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -31,9 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     CreateProductComponentComponent,
     EditProductComponentComponent,
     InfoBillComponentComponent,
-    ProductBillComponentComponent,
-    InfoPayComponentComponent,
-    BillPayComponentComponent
+    ProductBillComponentComponent
   ],
   imports: [
     BrowserModule,

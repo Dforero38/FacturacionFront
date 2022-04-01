@@ -9,56 +9,55 @@
         <dxi-item   itemType="group"
                 [colSpan]="2" 
                 [colCount]="2">
-            <dxi-item   dataField="numFactura"
-                editorType="dxTextBox"
-                [disabled]="true" 
+        <dxi-item   dataField="numberBill"
+                editorType="dxTextBox" 
                 [colSpan]="1"
                 [label]="   {
-                                text:'Numero'
+                                text:'Numero resolución Dian'
                             }">
-            <!-- <dxi-validation-rule type="required"></dxi-validation-rule> -->
-            </dxi-item>
-            <dxi-item   dataField="fechaRegistro"
-                editorType="dxDateBox"
-                [disabled]="true"  
-                [colSpan]="1"
-                [label]="   {
-                                text:'Fecha',
-                                format:'yy-mm-dd'      
-                            }">
-            <!-- <dxi-validation-rule type="required"></dxi-validation-rule> -->
-            </dxi-item>
-
-        </dxi-item>
-        <dxi-item   itemType="group"
-                [colSpan]="2" 
-                [colCount]="2">
-            <dxi-item   dataField="idCliente" 
-            editorType="dxSelectBox" 
-            [colSpan]="1"
-            [label]="   {
-                            text:'Cliente'
-                        }"
-            [editorOptions]="   { 
-                                    dataSource: clients,
-                                    displayExpr: 'name',  
-                                    valueExpr: 'id',
-                                    showClearButton:'true'
-                                }">
-
             <dxi-validation-rule type="required"></dxi-validation-rule>
             </dxi-item>
-            <dxi-item editorType="dxSwitch"
-            dataField="iva"
+        <dxi-item dataField="date"
+                [label]="{ text:'Fecha y Hora Registro'}"
+                editorType="dxDateBox"
+                [colSpan]="1"
+                [editorOptions]="{ type: 'datetime' }">
+          <dxi-validation-rule type="required"></dxi-validation-rule>
+        </dxi-item>
+    </dxi-item>
+    <dxi-item   itemType="group"
+                [colSpan]="2" 
+                [colCount]="2">
+         <dxi-item   dataField="idCustomer" 
+                editorType="dxSelectBox" 
+                [colSpan]="1"
+                [label]="   {
+                                text:'Cliente'
+                            }"
+                [editorOptions]="   { 
+                                        dataSource: clients,
+                                        displayExpr: 'businessName',  
+                                        valueExpr: 'id',
+                                        showClearButton:'true'
+                                    }">
+    
+                <dxi-validation-rule type="required"></dxi-validation-rule>
+                </dxi-item>
+                <dxi-item editorType="dxSwitch"
+            [colSpan]="1"
+            dataField="flagIva"
             [label]=" { text:'FACTURA CON IVA' }"
             [editorOptions]=" { switchedOffText: 'No', switchedOnText: 'Si'}"></dxi-item>  
-        </dxi-item> 
-
+            </dxi-item> 
+            <dxi-item itemType="empty" 
+                      [colSpan]="1"
+                      datafild="idTransactionType">
+            </dxi-item>
      <dxi-item   itemType="group" 
         [colSpan]="2" 
         [colCount]="2">
             <dxi-item   itemType="button" 
-                [colSpan]="1" 
+                [colSpan]="2" 
                 [buttonOptions]="   {
                                         text: 'Continuar', 
                                         type: 'success', 
@@ -74,12 +73,6 @@
 <div style="width: 100%;" 
      *ngIf="bill">
     <app-info-bill-component (closePago)="bill = false"></app-info-bill-component>
-    <br>
-    <div class="title_pago">
-        <H3>ADICIONA PRODUCTOS</H3>
-    </div>
-    <br>
-    <app-product-bill-component (closePago)="bill = false"></app-product-bill-component>
- </div>
+</div>
 
 

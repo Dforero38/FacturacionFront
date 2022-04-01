@@ -1,12 +1,12 @@
 <form class="form">
-    <dx-form    [(formData)]="billing" 
+    <dx-form    [(formData)]="infobill" 
                 labelLocation="top" 
                 [colCount]="3">
         <dxi-item   itemType="group"
                 [colSpan]="3" 
                 [colCount]="3">
-            <dxi-item   dataField="numFactura"
-                editorType="dxTextBox"
+            <dxi-item   dataField="numberBill"
+                editorType="dxNumberBox"
                 [disabled]="true" 
                 [colSpan]="1"
                 [label]="   {
@@ -14,7 +14,7 @@
                             }">
             <!-- <dxi-validation-rule type="required"></dxi-validation-rule> -->
             </dxi-item>
-            <dxi-item   dataField="fechaRegistro"
+            <dxi-item   dataField="registrationDate"
                 editorType="dxTextBox"
                 [disabled]="true"  
                 [colSpan]="1"
@@ -23,7 +23,7 @@
                             }">
             <!-- <dxi-validation-rule type="required"></dxi-validation-rule> -->
             </dxi-item>
-            <dxi-item   dataField="nombre"
+            <dxi-item   dataField="businessName"
                 editorType="dxTextBox"
                 [disabled]="true"  
                 [colSpan]="1"
@@ -45,7 +45,7 @@
                             }">
             <!-- <dxi-validation-rule type="required"></dxi-validation-rule> -->
             </dxi-item>
-            <dxi-item   dataField="direccion"
+            <dxi-item   dataField="address"
                 editorType="dxTextBox"
                 [disabled]="true"  
                 [colSpan]="1"
@@ -54,7 +54,7 @@
                             }">
             <!-- <dxi-validation-rule type="required"></dxi-validation-rule> -->
             </dxi-item>
-            <dxi-item   dataField="telefono"
+            <dxi-item   dataField="phone"
                 editorType="dxTextBox"
                 [disabled]="true"  
                 [colSpan]="1"
@@ -68,17 +68,8 @@
         <dxi-item   itemType="group"
                 [colSpan]="3" 
                 [colCount]="3">
-            <dxi-item   dataField="tipoCliente"
-                editorType="dxTextBox"
-                [disabled]="true"  
-                [colSpan]="1"
-                [label]="   {
-                                text:'Tipo Cliente'
-                                
-                            }">
-            <!-- <dxi-validation-rule type="required"></dxi-validation-rule> -->
-            </dxi-item>
-            <dxi-item   dataField="estado"
+
+            <dxi-item   dataField="flagstate"
                 editorType="dxTextBox"
                 [disabled]="true"  
                 [colSpan]="1"
@@ -88,7 +79,7 @@
                             }">
             <!-- <dxi-validation-rule type="required"></dxi-validation-rule> -->
             </dxi-item>
-            <dxi-item   dataField="iva"
+            <dxi-item   dataField="flagIva"
                 editorType="dxTextBox"
                 [disabled]="true"  
                 [colSpan]="1"
@@ -101,3 +92,9 @@
         </dxi-item>  
     </dx-form>   
 </form>
+<br>
+<div class="title_pago">
+    <H3>ADICIONA PRODUCTOS</H3>
+</div>
+<br>
+<app-product-bill-component (idMovement)="idMovement"></app-product-bill-component>

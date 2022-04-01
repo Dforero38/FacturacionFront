@@ -1,9 +1,9 @@
-<form class="form">
-    <dx-form    [(formData)]="bill" 
+<form class="form" (submit)="InsertMovementProduct($event)">
+    <dx-form    [(formData)]="productBill" 
                 labelLocation="top" 
                 [colCount]="5">
     
-        <dxi-item   dataField="id" 
+        <dxi-item   dataField="idProduct" 
                     editorType="dxSelectBox" 
                     [colSpan]="2"
                     [label]="   {
@@ -13,15 +13,17 @@
                                             dataSource: products,
                                             displayExpr: 'description',  
                                             valueExpr: 'id',
-                                            showClearButton:'true'
+                                            showClearButton:'true',
+                                            onSelectionChanged:valueunitChanged
                                         }">
                 
             <dxi-validation-rule type="required"></dxi-validation-rule>
         
         </dxi-item>
         
-        <dxi-item   dataField="NumFactura"
+        <dxi-item   dataField="quantity"
                     editorType="dxTextBox"
+                    [editorOptions]="{ onValueChanged: totalValueChanged}"
                     [colSpan]="1"
                     [label]="   {
                                     text:'Cantidad'
@@ -31,7 +33,7 @@
                 
         </dxi-item>
         
-        <dxi-item   dataField="NumFactura"
+        <dxi-item   dataField="unitValue"
                     editorType="dxTextBox"
                     [disabled]="true"
                     [colSpan]="1"
@@ -41,7 +43,7 @@
                 
         </dxi-item>
         
-        <dxi-item   dataField="FechaRegistro"
+        <dxi-item   dataField="totalValue"
                     editorType="dxTextBox"
                     [colSpan]="1"
                     [disabled]="true"
@@ -76,16 +78,16 @@
               <dxi-column dataField="id"
                           caption="N."
                           alignment="center"></dxi-column>              
-              <dxi-column dataField="product"
+              <dxi-column dataField="idProduct"
                           caption="Producto"
                           alignment="center"></dxi-column>
               <dxi-column dataField="quantity"
                           caption="Cantidad"
                           alignment="center"></dxi-column>
-              <dxi-column dataField="price"
+              <dxi-column dataField="unitValue"
                           caption="Valor Unitario"
                           alignment="center"></dxi-column>
-              <dxi-column dataField="total"
+              <dxi-column dataField="totalValue"
                           caption="Valor Total"
                           alignment="center"></dxi-column>
               <dxi-column caption="" 
@@ -113,3 +115,54 @@
                 </dx-button>
               </div>
 </dx-data-grid>
+<br>
+<form class="form" 
+      (submit)="UpdateBill($event)" >
+    <dx-form    [(formData)]="updatebill" 
+                labelLocation="top" 
+                [colCount]="3">           
+        <dxi-item   dataField="subtotal"
+                    editorType="dxTextBox"
+                    [disabled]="true"
+                    [editorOptions]="{ onValueChanged: totalValueChanged}"
+                    [colSpan]="1"
+                    [label]="   {
+                                    text:'Cantidad'
+                                }">
+                        
+            <dxi-validation-rule type="required"></dxi-validation-rule>              
+        </dxi-item>    
+        <dxi-item   dataField="iva"
+                    editorType="dxTextBox"
+                    [disabled]="true"
+                    [colSpan]="1"
+                    [label]="   {
+                                    text:'Valor Unitario'
+                                }">
+                
+        </dxi-item>   
+        <dxi-item   dataField="total"
+                    editorType="dxTextBox"
+                    [colSpan]="1"
+                    [disabled]="true"
+                    [label]="   {
+                                    text:'Valor Total'                               
+                                }">
+                
+        </dxi-item>
+
+        <dxi-item   itemType="button" 
+                    [colSpan]="3" 
+                    [buttonOptions]="   {
+                                            text: 'Finalizar Factura', 
+                                            type: 'success', 
+                                            icon: 'plus',
+                                            width:'auto',
+                                            height:'auto',
+                                            useSubmitBehavior: true
+                                        }">
+        </dxi-item>
+
+     </dx-form>   
+
+</form>

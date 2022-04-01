@@ -1,7 +1,6 @@
 <div class="title_pay">
     <h1>RECAUDO</h1>
 </div>
-<div style="width: 100%;" *ngIf="!pay">
     <form class="form" (submit)="SaveForm($event)" >
         <dx-form    [(formData)]="pays" 
                     labelLocation="top" 
@@ -9,15 +8,6 @@
             <dxi-item   itemType="group"
                     [colSpan]="2" 
                     [colCount]="2">
-                <dxi-item   dataField="numPago"
-                    editorType="dxTextBox"
-                    [disabled]="true" 
-                    [colSpan]="1"
-                    [label]="   {
-                                    text:'Numero'
-                                }">
-                <!-- <dxi-validation-rule type="required"></dxi-validation-rule> -->
-                </dxi-item>
                 <dxi-item   dataField="fechaRegistro"
                     editorType="dxDateBox"
                     [disabled]="true"  
@@ -26,52 +16,46 @@
                                     text:'Fecha',
                                     format:'yy-mm-dd'      
                                 }">
-                <!-- <dxi-validation-rule type="required"></dxi-validation-rule> -->
+                    <dxi-validation-rule type="required"></dxi-validation-rule>
                 </dxi-item>
-    
-            </dxi-item>
-            <dxi-item   itemType="group"
-                    [colSpan]="2" 
-                    [colCount]="2">
                 <dxi-item   dataField="idCliente" 
                 editorType="dxSelectBox" 
                 [colSpan]="1"
                 [label]="   {
-                                text:'Cliente'
+                                text:'Facturas Pendientes por Pago'
                             }"
                 [editorOptions]="   { 
-                                        dataSource: clients,
-                                        displayExpr: 'name',  
+                                        dataSource: bills,
+                                        displayExpr: 'largeDescription',  
                                         valueExpr: 'id',
                                         showClearButton:'true'
                                     }">
     
                 <dxi-validation-rule type="required"></dxi-validation-rule>
-                </dxi-item>
-                <dxi-item   dataField="tipoPago" 
-                editorType="dxSelectBox" 
-                [colSpan]="1"
-                [label]="   {
-                                text:'Tipo Pago'
-                            }"
-                [editorOptions]="   { 
-                                        dataSource: typePay,
-                                        displayExpr: 'name',  
-                                        valueExpr: 'id',
-                                        showClearButton:'true'
-                                    }">
+                </dxi-item>                          
+                
     
-                <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-item>
+            <dxi-item   itemType="group"
+                    [colSpan]="2" 
+                    [colCount]="2">                 
+                <dxi-item   dataField="abono"
+                    editorType="dxTextBox"
+                    [disabled]="false" 
+                    [colSpan]="1"
+                    [label]="   {
+                                    text:'Valor Abono'
+                                }">
+                    <dxi-validation-rule type="required"></dxi-validation-rule>
                 </dxi-item>
             </dxi-item>
-
-         <dxi-item   itemType="group" 
-            [colSpan]="2" 
-            [colCount]="2">
+            <dxi-item   itemType="group" 
+                        [colSpan]="2" 
+                        [colCount]="2">
                 <dxi-item   itemType="button" 
-                    [colSpan]="1" 
-                    [buttonOptions]="   {
-                                            text: 'Continuar', 
+                            [colSpan]="1" 
+                            [buttonOptions]="   {
+                                            text: 'Generar Recaudo', 
                                             type: 'success', 
                                             width:'auto',
                                             useSubmitBehavior: true                                       
@@ -80,13 +64,6 @@
         </dxi-item>     
         </dx-form>   
     </form>
-    </div>
-<div style="width: 100%;" 
-    *ngIf="pay">
-   <app-info-pay-component (closePago)="pay = false"></app-info-pay-component>
-   <br>
-   <br>
-   <app-bill-pay-component (closePago)="pay = false"></app-bill-pay-component>
-</div>   
+
     
 

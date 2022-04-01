@@ -1,5 +1,6 @@
 export class ClientDTO {
    id: number;
+   numberBill: number;
    idTypeCustomer: number;
    descriptionTypeCustomer: string;
    businessName: string;
@@ -11,6 +12,7 @@ export class ClientDTO {
 
     constructor(){
         this.id = 0,
+        this.numberBill=0,
         this.idTypeCustomer = 0,
         this.descriptionTypeCustomer='',
         this.businessName ='',
