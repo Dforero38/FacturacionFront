@@ -11,6 +11,9 @@ export class infobillDTO {
     TypeCustomer:string;
     state:string;
     flagstate :string;
+    total: number;
+    subTotal: number;
+    iva: number;
 
     constructor(){
         this.id = 0;
@@ -24,7 +27,10 @@ export class infobillDTO {
         this.phone=0,
         this.TypeCustomer='',
         this.state='',
-        this.flagstate = ''
+        this.flagstate = '',
+        this.total=0,
+        this.subTotal=0,
+        this.iva=0
     }
 }
 

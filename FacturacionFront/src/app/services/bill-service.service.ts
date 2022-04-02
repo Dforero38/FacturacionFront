@@ -2,8 +2,9 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map, Observable, retry } from "rxjs";
 import { environment } from "src/environments/environment";
-import { BillingForPayDTO } from "../models/BillingForPaydto";
+import { BillingForPayDTO } from "../models/BillingForPayDTO";
 import { CreateBillDTO } from "../models/CreateBillDTO";
+
 
 @Injectable({
     providedIn: 'root'

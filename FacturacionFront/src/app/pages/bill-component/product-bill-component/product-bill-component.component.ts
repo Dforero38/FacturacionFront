@@ -46,9 +46,9 @@ export class ProductBillComponentComponent implements OnInit {
     if (this.productBill.id == 0)
     {
       this.movementProductService.InsertMovementProduct(this.productBill).subscribe((data: any) => {
-        console.log(data);
         if (data) {
           this.getMovementProduct();
+          this.getBill();
           this.message = "Producto adicionado con exito.";
           this.type = "success";
           this.isVisible = true;
@@ -63,7 +63,8 @@ export class ProductBillComponentComponent implements OnInit {
     }else{
       this.movementProductService.UpdateMovementProduct(this.productBill).subscribe((data:any) =>{
         if (data){
-          
+          this.getMovementProduct();
+          this.getBill();
            this.message = "Producto modificado correctamente.";
            this.type = "success";
            this.isVisible = true;
@@ -125,7 +126,7 @@ export class ProductBillComponentComponent implements OnInit {
 
 }
 
-  UpdateBill(event:any){
-
+  FinishBill(event:any){
+  
   }
 }

@@ -123,11 +123,11 @@
 </dx-data-grid>
 <br>
 <form class="form" 
-      (submit)="UpdateBill($event)" >
-    <dx-form    [(formData)]="updatebill" 
+      (submit)="FinishBill($event)" >
+    <dx-form    [(formData)]="infobill" 
                 labelLocation="top" 
                 [colCount]="3">           
-        <dxi-item   dataField="subtotal"
+        <dxi-item   dataField="subTotal"
                     editorType="dxTextBox"
                     [disabled]="true"
                     [editorOptions]="{ onValueChanged: totalValueChanged}"
@@ -162,7 +162,7 @@
                     [buttonOptions]="   {
                                             text: 'Finalizar Factura', 
                                             type: 'success', 
-                                            icon: 'plus',
+                                            icon: 'save',
                                             width:'auto',
                                             height:'auto',
                                             useSubmitBehavior: true

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BillingForPayDTO } from 'src/app/models/BillingForPaydto';
-import { ClientDTO } from 'src/app/models/ClientDTO';
+import { BillingForPayDTO } from 'src/app/models/BillingForPayDTO';
 import { BillServiceService } from 'src/app/services/bill-service.service';
-import { ClientsServiceService } from 'src/app/services/clients-service.service';
 
 @Component({
   selector: 'app-pay-component',
@@ -26,7 +24,7 @@ export class PayComponentComponent implements OnInit {
    
   NumFactura: number=1;
   FechaRegistro: Date = new Date;
-  bills : BillingForPayDTO[] =[];             
+  bills :[] =[];             
   constructor(private billService : BillServiceService) { }
   
   ngOnInit(): void {
@@ -39,5 +37,6 @@ export class PayComponentComponent implements OnInit {
     }
   SaveForm= (e:any) => {
     e.preventDefault();
+
    }
 }
