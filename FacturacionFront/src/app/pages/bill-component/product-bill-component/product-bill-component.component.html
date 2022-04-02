@@ -68,6 +68,10 @@
      </dx-form>   
 
 </form>
+<dx-toast [(visible)]="isVisible" 
+          [(type)]="type" 
+          [(message)]="message">
+</dx-toast>
 
 <dx-data-grid   id="dataGrid"
                 class="mt-5"
@@ -78,7 +82,7 @@
               <dxi-column dataField="id"
                           caption="N."
                           alignment="center"></dxi-column>              
-              <dxi-column dataField="idProduct"
+              <dxi-column dataField="productName"
                           caption="Producto"
                           alignment="center"></dxi-column>
               <dxi-column dataField="quantity"
@@ -103,7 +107,8 @@
                            text="" 
                            type="success" 
                            icon="edit"
-                           hint="Modificar">
+                           hint="Modificar"
+                           (onClick)="editMovementProduct(cell.data)">
                 </dx-button>
                 &nbsp;
                 <dx-button alignment="center" 
@@ -111,7 +116,8 @@
                            text="" 
                            type="danger" 
                            icon="clear"
-                           hint="Eliminar">
+                           hint="Eliminar"
+                           (onClick)="deleteMovementProduct(cell.data.id)">
                 </dx-button>
               </div>
 </dx-data-grid>
@@ -127,7 +133,7 @@
                     [editorOptions]="{ onValueChanged: totalValueChanged}"
                     [colSpan]="1"
                     [label]="   {
-                                    text:'Cantidad'
+                                    text:'SubTotal'
                                 }">
                         
             <dxi-validation-rule type="required"></dxi-validation-rule>              
@@ -137,7 +143,7 @@
                     [disabled]="true"
                     [colSpan]="1"
                     [label]="   {
-                                    text:'Valor Unitario'
+                                    text:'IVA'
                                 }">
                 
         </dxi-item>   
@@ -146,7 +152,7 @@
                     [colSpan]="1"
                     [disabled]="true"
                     [label]="   {
-                                    text:'Valor Total'                               
+                                    text:'Total Factura'                               
                                 }">
                 
         </dxi-item>
