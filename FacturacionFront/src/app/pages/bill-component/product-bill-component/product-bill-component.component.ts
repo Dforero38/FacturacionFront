@@ -113,6 +113,8 @@ export class ProductBillComponentComponent implements OnInit {
   deleteMovementProduct(id : number) {
     this.movementProductService.DeleteMovementProduct(id).subscribe(data => {
       if (data){
+        this.getMovementProduct();
+        this.getBill();
         this.message = "Producto elimando correctamente.";
         this.type = "success";
         this.isVisible = true;
@@ -121,7 +123,7 @@ export class ProductBillComponentComponent implements OnInit {
         this.type = "error";
         this.isVisible = true;
       }
-      this.getMovementProduct();
+     
     })
 
 }
