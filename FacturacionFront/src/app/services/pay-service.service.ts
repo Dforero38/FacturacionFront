@@ -15,7 +15,8 @@ export class PayServiceService {
     this.myAppUrl=environment.endpoint;   
   }
 
-  InsertPay(createPayDTO: PayDTO): Observable<any> {
+  InsertPay(createPayDTO:PayDTO): Observable<any> {
+    debugger
     return this.http.post(`${this.myAppUrl}Payment/InsertPayment`, createPayDTO)
         .pipe(retry(0), map((response => {
             return response;

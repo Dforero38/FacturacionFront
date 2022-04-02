@@ -8,17 +8,14 @@
             <dxi-item   itemType="group"
                     [colSpan]="2" 
                     [colCount]="2">
-                <dxi-item   dataField="fechaRegistro"
+            <dxi-item dataField="date"
+                    [label]="{ text:'Fecha y Hora Registro'}"
                     editorType="dxDateBox"
-                    [disabled]="true"  
                     [colSpan]="1"
-                    [label]="   {
-                                    text:'Fecha',
-                                    format:'yy-mm-dd'      
-                                }">
-                    <dxi-validation-rule type="required"></dxi-validation-rule>
-                </dxi-item>
-                <dxi-item   dataField="idCliente" 
+                    [editorOptions]="{ type: 'datetime' }">
+              <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-item>
+                <dxi-item   dataField="idBill" 
                 editorType="dxSelectBox" 
                 [colSpan]="1"
                 [label]="   {
@@ -39,7 +36,7 @@
             <dxi-item   itemType="group"
                     [colSpan]="2" 
                     [colCount]="2">                 
-                <dxi-item   dataField="abono"
+                <dxi-item   dataField="value"
                     editorType="dxTextBox"
                     [disabled]="false" 
                     [colSpan]="1"

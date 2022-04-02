@@ -1,19 +1,19 @@
 export class PayDTO {
    id: number;
-   IdCustomer: number;
+   idCustomer: number;
    numberBill: number;
-   DateTime: Date;
-   Value: number;
+   date: Date;
+   value: number;
    idBill: number;
-   TypePay: number;
+   typePay: number;
 
     constructor(){
         this.id = 0,
         this.numberBill=0,
-        this.IdCustomer=0,
-        this.DateTime = new Date,
-        this.Value = 0,
+        this.idCustomer=0,
+        this.date = new Date,
+        this.value = 0,
         this.idBill = 0,
-        this.TypePay = 0
+        this.typePay = 2
     }
 }
